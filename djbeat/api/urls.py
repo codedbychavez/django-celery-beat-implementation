@@ -3,5 +3,5 @@ from .views import *
 
 urlpatterns = [
     # api paths
-    path('create', create.as_view()),
+    path('create_interval_periodic_task', create_interval_periodic_task.as_view()),
 ]
