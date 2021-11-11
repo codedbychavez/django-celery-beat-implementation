@@ -18,3 +18,8 @@ app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 @app.task(bind=True)
 def print_hello(self):
     print('Hello World!')
+
+
+@app.task(bind=True)
+def second_task(self):
+    print('second task!')
