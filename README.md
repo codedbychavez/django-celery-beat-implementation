@@ -10,7 +10,7 @@ A no bs approach to dynamic task scheduling in Django.
 
 - `cd djbeat`
 
-- Start a Celery worker service (**OPTIONAL**)
+- Start a Celery worker service
  
 `celery -A djbeat worker --loglevel=info`
 
