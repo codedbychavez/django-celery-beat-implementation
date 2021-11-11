@@ -15,8 +15,8 @@ class create_interval_periodic_task(APIView):
     {
         "interval": 10,
         "period_choice": "seconds",
-        "name": "update cron_log",
-        "task": "djbeat.api.tasks.update_log"
+        "name": "create print_hello",
+        "task": "djbeat.api.celery_init.print_hello"
     }
     """
     def post(self, request, *args, **kwargs):
@@ -82,8 +82,8 @@ class update_interval_periodic_task(APIView):
     {
         "interval": 10,
         "period_choice": "seconds",
-        "name": "update cron_log",
-        "task": "djbeat.api.tasks.update_log"
+        "name": "update print hello",
+        "task": "djbeat.api.celery_init.print_hello_update"
     }
     """
     def post(self, request, *args, **kwargs):
@@ -104,7 +104,7 @@ class update_interval_periodic_task(APIView):
             schedule_instance_id = schedule_instance.interval.id
 
             # Update the schedule
-            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.SECONDS)
+            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.DAYS)
 
             # Update the periodic task
             PeriodicTask.objects.filter(id=periodic_task_id).update(name=name, task=task)
@@ -116,7 +116,7 @@ class update_interval_periodic_task(APIView):
             schedule_instance_id = schedule_instance.interval.id
 
             # Update the schedule
-            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.SECONDS)
+            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.HOURS)
 
             # Update the periodic task
             PeriodicTask.objects.filter(id=periodic_task_id).update(name=name, task=task)
@@ -128,7 +128,7 @@ class update_interval_periodic_task(APIView):
             schedule_instance_id = schedule_instance.interval.id
 
             # Update the schedule
-            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.SECONDS)
+            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.MINUTES)
 
             # Update the periodic task
             PeriodicTask.objects.filter(id=periodic_task_id).update(name=name, task=task)
@@ -152,7 +152,7 @@ class update_interval_periodic_task(APIView):
             schedule_instance_id = schedule_instance.interval.id
 
             # Update the schedule
-            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.SECONDS)
+            IntervalSchedule.objects.filter(id=schedule_instance_id).update(every=interval, period=IntervalSchedule.MICROSECONDS)
 
             # Update the periodic task
             PeriodicTask.objects.filter(id=periodic_task_id).update(name=name, task=task)
