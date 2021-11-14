@@ -1,6 +1,8 @@
 from __future__ import absolute_import
 import os
 import sys
+import requests
+from datetime import datetime
 
 from celery import Celery
 import django
@@ -23,3 +25,15 @@ def print_hello(self):
 @app.task(bind=True)
 def second_task(self):
     print('second task!')
+
+
+@app.task(bind=True)
+def trigger_workflow(self):
+    myFile = open('/Users/chavez/Desktop/Creative Work/repos/django-celery-beat-implementation/djbeat/cron_log.txt', 'a') 
+    myFile.write('\nAccessed on ' + str(datetime.now()))
+    pload = {
+        'workflow':3,
+        'body':"\"{\\\"to\\\":\\\"chavez.harris@v75inc.com\\\",\\\"from\\\":\\\"chavez.harris@v75inc.com\\\",\\\"subject\\\":\\\"Foo\\\",\\\"body\\\":\\\"Hello World!\\\"}\""
+        }
+    r = requests.post('https://localhost:8000/api/v1/workflow/workflow_trigger/',data=pload, verify=False)
+    print(r.text)

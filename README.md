@@ -1,4 +1,4 @@
-# django-celery-beat-implementation
+# Dynamic task scheduling
 A no bs approach to dynamic task scheduling in Django.
 
 
