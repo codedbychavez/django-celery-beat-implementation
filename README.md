@@ -1,6 +1,18 @@
 # Dynamic task scheduling
 A no bs approach to dynamic task scheduling in Django.
 
+## Overview
+This application lets you configure dynamic periodic tasks in Django application.
+
+## Features
+- Periodic task scheduling via API Endpoints:
+    - Create (/api/create)
+    - Update (/api/update)
+    - Delete (/api/delete)
+
+## Requirements
+- Docker
+- Python 3.8
 
 ## Getting started
 
