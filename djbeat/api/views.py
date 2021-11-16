@@ -80,6 +80,7 @@ class update_interval_periodic_task(APIView):
     Create an interval-based periodic task
     Expected request object looks like the below
     {
+        "id": 1,
         "interval": 10,
         "period_choice": "seconds",
         "name": "update print hello",
